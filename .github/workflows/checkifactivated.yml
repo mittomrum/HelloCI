@@ -5,9 +5,9 @@ on:
 
 jobs:
   checkLicense:
-    name: Check for the Unity license
+    name: Checking so that the UNITY_LICENSE has been added to git
     runs-on: ubuntu-latest
     steps: 
       - name: Fail - No License XX
-        if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
+        if: ${{ !startsWith(secrets.UNITY_LICENSE, '<') }}
         run: exit 1
