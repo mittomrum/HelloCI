@@ -6,14 +6,20 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  checkLicense:
+  checkSecrets:
     name: Check for the Unity license
     runs-on: ubuntu-latest
     env:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
     steps:
-      - name: Fail - No License XX
+      - name: Fail - No License in settings-secretsandvariables
         if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
+        run: exit 1
+      - name: Fail - No UNITY_USER in settings-secretsandvariables
+        if: ${{ !startsWith(env.UNITY_USER, '') }}
+        run: exit 1
+      - name: Fail - No UNITY_PASSWORD in settings-secretsandvariables
+        if: ${{ !startsWith(env.UNITY_PASSWORD, '') }}
         run: exit 1
 
   testRunner:
