@@ -1,12 +1,12 @@
 name: GameCI Template 🎮
 
-on: push
+on: workflow_dispatch
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  checkSecretVariables:
+  checkSecrets:
     name: Check for the Unity license
     runs-on: ubuntu-latest
     env:
@@ -25,7 +25,7 @@ jobs:
         run: exit 1
 
   testRunner:
-    needs: checkSecretVariables
+    needs: checkSecrets
     name: Test in ${{ matrix.testMode }} ✨
     runs-on: ubuntu-latest
     strategy:
