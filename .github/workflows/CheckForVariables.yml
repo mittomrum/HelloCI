@@ -9,21 +9,21 @@ jobs:
   check_variables:
     runs-on: ubuntu-latest
     steps:
-    - name: Check Variables
-      env:
-      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-      UNITY_USER: ${{ secrets.UNITY_USER }}
-      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-      run: |
-        if [[ -z "${UNITY_LICENSE}" ]]; then
-          echo "UNITY_LICENSE is not set. Please set the secret in the repository settings."
-          exit 1
-        fi
-        if [[ -z "${UNITY_USER}" ]]; then
-          echo "UNITY_USER is not set. Please set the secret in the repository settings."
-          exit 1
-        fi
-        if [[ -z "${UNITY_PASSWORD}" ]]; then
-          echo "UNITY_PASSWORD is not set. Please set the secret in the repository settings."
-          exit 1
-        fi
+      - name: Check Variables
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_USER: ${{ secrets.UNITY_USER }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          if [[ -z "${UNITY_LICENSE}" ]]; then
+            echo "UNITY_LICENSE is not set. Please set the secret in the repository settings."
+            exit 1
+          fi
+          if [[ -z "${UNITY_USER}" ]]; then
+            echo "UNITY_USER is not set. Please set the secret in the repository settings."
+            exit 1
+          fi
+          if [[ -z "${UNITY_PASSWORD}" ]]; then
+            echo "UNITY_PASSWORD is not set. Please set the secret in the repository settings."
+            exit 1
+          fi
