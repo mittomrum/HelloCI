@@ -81,7 +81,6 @@ jobs:
   #         path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   buildWebGL:
-    needs: testRunner
     name: Build for WebGL 🖥️
     runs-on: ubuntu-latest
     strategy:
@@ -105,7 +104,7 @@ jobs:
           git lfs pull
           git add .
           git reset --hard
-          
+
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
