@@ -6,7 +6,7 @@ jobs:
  checkLicense:
  name: Check for the Unity license
  runs-on: ubunt-latest
- steps: 
-  - name: Fail - No License XX
-  if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
-  run: exit 1
+  steps: 
+   - name: Fail - No License XX
+   if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
+   run: exit 1
