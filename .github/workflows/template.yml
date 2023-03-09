@@ -7,8 +7,8 @@ env:
 
 jobs:
  name: CheckIfLicensed 🔐
-  checkLicense:
-    name: Check for the Unity license
+ checkLicense:
+  name: Check for the Unity license
     runs-on: ubuntu-latest
     env:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -18,11 +18,11 @@ jobs:
         run: exit 1
 
   testRunner:
-  needs: CheckIfLicensed
+  needs: 
     name: Test in ${{ matrix.testMode }} ✨
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         testMode:
           - EditMode
